@@ -40,12 +40,18 @@ export class ChatFooter extends React.Component {
 
     render() {
         return (
-            <footer className="container-fluid p-0 flex-grow-0 flex-shrink-1 bg-light fixed-bottom">
+            <footer className="container-fluid p-0 flex-grow-0 flex-shrink-1 bg-white fixed-bottom">
                 <hr className="mt-0" />
-                <div className="row">
-                    <div className="col d-flex justify-content-center">
-                        <form onSubmit={this.handleSubmit}>
-                            <input type="text" name="message" onChange={this.handleChange} value={this.state.input} />
+                <div className="row justify-content-center pb-5">
+                    <div className="col-10 d-flex justify-content-center align-middle">
+                        <form className="input-group" onSubmit={this.handleSubmit} style={{ whiteSpace: "nowrap" }}>
+                            <input type="text" className="form-control d-inline" placeholder="Touch to enter text ..." name="message" onChange={this.handleChange} value={this.state.input} />
+                            <div className="input-group-append">
+                                <button type="button" className="btn btn-primary ps-3 pe-3" onClick={this.handleSubmit}
+                                    style={{ borderTopLeftRadius: 0, borderBottomLeftRadius: 0 }}>
+                                    <i className="bi bi-send"></i>
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
