@@ -5,8 +5,20 @@ VALUES ("jushutch@umich.edu", "Justin", "Hutchins", "password");
 
 INSERT INTO rooms DEFAULT VALUES;
 
-INSERT INTO articles(title, url)
-VALUES ("Microsoft to acquire Activision Blizzard for $68.7 billion",
+INSERT INTO articles(title, publisher, tag, image_url, url)
+VALUES ("Microsoft to acquire Activision Blizzard for $68.7 billion", "The Verge", "Technology", "",
+"https://www.theverge.com/2022/1/18/22889258/microsoft-activision-blizzard-xbox-acquisition-call-of-duty-overwatch");
+
+INSERT INTO articles(title, publisher, tag, image_url, url)
+VALUES ("Microsoft to acquire Activision Blizzard for $68.7 billion", "The Verge", "Technology", "",
+"https://www.theverge.com/2022/1/18/22889258/microsoft-activision-blizzard-xbox-acquisition-call-of-duty-overwatch");
+
+INSERT INTO articles(title, publisher, tag, image_url, url)
+VALUES ("Microsoft to acquire Activision Blizzard for $68.7 billion", "The Verge", "Technology", "",
+"https://www.theverge.com/2022/1/18/22889258/microsoft-activision-blizzard-xbox-acquisition-call-of-duty-overwatch");
+
+INSERT INTO articles(title, publisher, tag, image_url, url)
+VALUES ("Microsoft to acquire Activision Blizzard for $68.7 billion", "The Verge", "Technology", "",
 "https://www.theverge.com/2022/1/18/22889258/microsoft-activision-blizzard-xbox-acquisition-call-of-duty-overwatch");
 
 INSERT INTO users_to_rooms(user, room)

@@ -1,5 +1,5 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css");
-@import url("https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,600,700");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700");
 
 a {
     color: black;
@@ -16,6 +16,35 @@ form {
 
 h1 {
     font-weight: 600;
+}
+
+.title {
+    font-weight: 800;
+    color: #CC4A4A;
+    font-size: 30px;
+}
+
+.article-details {
+    font-size: 10px;
+    color: #6C757D;
+}
+
+.badge {
+    font-size: 1em;
+}
+
+.headline {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.thumbnail {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 .alert {

@@ -10,4 +10,12 @@ import athens
 
 @athens.app.route('/')
 def show_index():
-    return flask.render_template("index.html")
+    connection = athens.model.get_db()
+    cur = connection.execute(
+        "SELECT id, title, publisher, tag, image_url, url FROM articles"
+    )
+    articles = cur.fetchall()
+    context = {
+        "articles": articles
+    }
+    return flask.render_template("index.html", **context)

@@ -29,7 +29,7 @@ case $1 in
 
   "destroy")
     set -x
-    rm -rf var/athens.sqlite3 var/uploads
+    rm -rf var/athens.sqlite3
     ;;
 
   "dump")
