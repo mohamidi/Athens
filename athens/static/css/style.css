@@ -90,3 +90,37 @@ body {
     font-weight: bold;
     color: white;
 }
+
+html, body {
+    margin: 0;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+    background-image: url('../images/background.png');
+    background-position: 60%;
+}
+
+.form-signin {
+    position: relative;
+    top: 30vh;
+    color: gray;
+}
+
+.form-signin h4 {
+    color: #CC4A4A;
+}
+
+.form-signin button {
+    background-color: #CC4A4A;
+    color: white;
+}
+
+.form-signin p {
+    font-size: 14px;
+    color: gray;
+}
+
+.sign-in-logo {
+    position: relative;
+    top: 23vh;
+    font-size: 40px;
+}

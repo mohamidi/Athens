@@ -1,14 +1,53 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- Header -->
+<!-- Sign in Page -->
+<body>
+    <div class="container-fluid"></div>
+        <div class="text-center mb-0 title sign-in-logo">
+            <img src="static/images/logo.png" alt="" width="40" height="40" class="d-inline-block align-text-top">
+            Athens
+        </div>
+        <div class="row">
+            <main class="form-signin d-flex align-items-center justify-content-center">
+                <form class="container-fluid justify-content-center my-auto w-100">
+                
+                <div class="form-floating mb-2">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <label for="floatingInput">Email address</label>
+                </div>
+                <div class="form-floating mb-2">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                </div>
+            
+                <div class="checkbox mb-4">
+                    <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <button class="w-100 btn btn-lg mb-4" type="submit">Sign in</button>
+                <hr class="mb-4 mx-auto" size="3" width="90%" >  
+                <div class="text-center">
+                    <a href="#"><p>Don't have an account? Sign up</p></a>
+                </div>
+                </form>
+
+            </main>
+        </div>
+        
+    </div> 
+</body>
+
+
+<!-- Header --><!--
 <nav class="navbar bg-white">
     <div class="container-fluid justify-content-center title">
         <img src="static/images/logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
         Athens
     </div>
 </nav>
-<hr class="m-0" />
-<!-- List all of the articles -->
+<hr class="m-0" />-->
+<!-- List all of the articles --><!--
 <ul class="list-group list-group-flush">
     {% for article in articles %}
     <li class="list-group-item">
@@ -37,3 +76,4 @@
 </ul>
 
 {% endblock content %}
+-->
