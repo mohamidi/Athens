@@ -13,21 +13,21 @@ from athens import utils
 
 @athens.app.route('/')
 def show_index():
-    connection = athens.model.get_db()
-    cur = connection.execute(
-        "SELECT id, title, publisher, tag, image_url, url FROM articles"
-    )
-    articles = cur.fetchall()
-    context = {
-        "articles": articles
-    }
-    return flask.render_template("login.html", **context)
+    """Route to homepage or login"""
+    logged_in_user = flask.session.get('username')
+
+    if not logged_in_user:
+        return flask.redirect(flask.url_for('login'))
+    else:
+        return flask.redirect(flask.url_for('home_page'))
+
 
 @athens.app.route('/home')
-def show_home_page():
+def home_page():
     # TODO:  Add articles to home page; 
     context = {}
-    return flask.render_template("home_page.html", **context)
+    return flask.render_template("index.html", **context)
+
 
 @athens.app.route("/favicon.ico")
 def favicon():
