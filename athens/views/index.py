@@ -32,8 +32,9 @@ def show_home_page():
 @athens.app.route("/favicon.ico")
 def favicon():
     """Return our favicon."""
+    app_root = Path(athens.app.root_path)
     return flask.send_from_directory(
-        #os.path.join(insta485.app.root_path, "static"),
+        str(app_root / 'static'),
         "favicon.ico",
         mimetype="image/vnd.microsoft.icon",
     )
