@@ -1,79 +1,62 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- Sign in Page -->
-<body>
-    <div class="container-fluid"></div>
-        <div class="text-center mb-0 title sign-in-logo">
-            <img src="static/images/logo.png" alt="" width="40" height="40" class="d-inline-block align-text-top">
-            Athens
-        </div>
-        <div class="row">
-            <main class="form-signin d-flex align-items-center justify-content-center">
-                <form class="container-fluid justify-content-center my-auto w-100">
-                
-                <div class="form-floating mb-2">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Email address</label>
-                </div>
-                <div class="form-floating mb-2">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Password</label>
-                </div>
-            
-                <div class="checkbox mb-4">
-                    <label>
-                    <input type="checkbox" value="remember-me"> Remember me
-                    </label>
-                </div>
-                <button class="w-100 btn btn-lg mb-4" type="submit">Sign in</button>
-                <hr class="mb-4 mx-auto" size="3" width="90%" >  
-                <div class="text-center">
-                    <a href="#"><p>Don't have an account? Sign up</p></a>
-                </div>
-                </form>
 
-            </main>
-        </div>
-        
-    </div> 
-</body>
-
-
-<!-- Header --><!--
-<nav class="navbar bg-white">
-    <div class="container-fluid justify-content-center title">
-        <img src="static/images/logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
+<div class="container navigation">
+  <nav class="navbar navbar-expand-lg navbar-light px-3">
+    <div class="container nav-name" id="nav-name" style="width: 40%;">
+      <a class="navbar-brand" href="{{url_for('home_page')}}">
+        <img src="static/images/logo.png" alt="Athens Logo" width="40" height="40"
+          class="d-inline-block align-text-top">
+        &nbsp;
         Athens
+      </a>
     </div>
-</nav>
-<hr class="m-0" />-->
-<!-- List all of the articles --><!--
-<ul class="list-group list-group-flush">
-    {% for article in articles %}
-    <li class="list-group-item">
-        <a href="/room/?article={{article.id}}">
-            <div class="card border-0">
-                <div class="row align-items-center">
-                    <div class="col-10 p-0">
-                        <div class="card-body p-0">
-                            <h5 class="card-title headline mb-0">{{article.title}}</h5>
-                            <p class="card-text article-details">
-                                {{article.publisher}} ~ 2 Hours Ago
-                                <span class="badge rounded-pill bg-primary">{{article.tag}}</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col p-0">
-                        <div style="background-image:url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fs1.ibtimes.com%2Fsites%2Fwww.ibtimes.com%2Ffiles%2Fstyles%2Ffull%2Fpublic%2F2018%2F03%2F13%2Fmicrosoft_0.jpg&f=1&nofb=1')"
-                            class="thumbnail rounded" />
-                    </div>
-                </div>
-            </div>
-            </div>
-        </a>
-    </li>
-    {% endfor %}
-</ul>
 
+    <div class="container nav-items">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="container">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </div>
+
+        <div class="container" style="width: 40%;">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">USER</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+    </li>
+    </ul>
+</div>
+</div>
+</nav>
+</div>
 {% endblock content %}
--->

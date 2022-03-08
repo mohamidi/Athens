@@ -95,7 +95,8 @@ html, body {
     margin: 0;
     height: 100%;
     font-family: 'Montserrat', sans-serif;
-    background-image: url('../images/background.png');
+    /* background-image: url('../images/background.png'); */
+    background-color:rgb(255, 128, 111);
     background-position: 60%;
 }
 
@@ -123,4 +124,12 @@ html, body {
     position: relative;
     top: 23vh;
     font-size: 40px;
+}
+
+.navigation {
+    background-color:rgb(255, 255, 255);
+}
+
+.navbar-brand {
+    font-size: 30px;
 }
