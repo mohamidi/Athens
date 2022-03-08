@@ -97,6 +97,7 @@ html, body {
     font-family: 'Montserrat', sans-serif;
     background-image: url('../images/background.png');
     background-position: 60%;
+    overflow: hidden;
 }
 
 .form-signin {
