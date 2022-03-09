@@ -11,6 +11,7 @@ import flask
 import athens
 from athens import utils
 
+
 @athens.app.route('/')
 def show_index():
     """Route to homepage or login"""
@@ -24,8 +25,14 @@ def show_index():
 
 @athens.app.route('/home')
 def home_page():
-    # TODO:  Add articles to home page; 
-    context = {}
+    connection = athens.model.get_db()
+    cur = connection.execute(
+        "SELECT id, title, publisher, tag, image_url, url FROM articles"
+    )
+    articles = cur.fetchall()
+    context = {
+        "articles": articles
+    }
     return flask.render_template("index.html", **context)
 
 
