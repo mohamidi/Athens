@@ -18,6 +18,9 @@ export class ChatFooter extends React.Component {
     }
 
     handleSubmit(event) {
+        if (this.state.input == "") {
+            return;
+        }
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -40,7 +43,7 @@ export class ChatFooter extends React.Component {
 
     render() {
         return (
-            <footer className="container-fluid p-0 flex-grow-0 flex-shrink-1 bg-white fixed-bottom">
+            <div className="bg-white fixed-bottom">
                 <hr className="mt-0" />
                 <div className="row justify-content-center pb-5">
                     <div className="col-10 d-flex justify-content-center align-middle">
@@ -55,7 +58,7 @@ export class ChatFooter extends React.Component {
                         </form>
                     </div>
                 </div>
-            </footer>
+            </div>
         );
     }
 }

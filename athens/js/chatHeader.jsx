@@ -26,7 +26,7 @@ export class ChatHeader extends React.Component {
     render() {
         const { article } = this.state;
         return (
-            <div className="header fixed-top bg-white">
+            <div className="header bg-white sticky-top">
                 <h1 className="pt-2 ps-3 pb-1 m-0">
                     {article["title"]}
                     <a href={article["url"]}>

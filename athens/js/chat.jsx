@@ -30,7 +30,7 @@ class Chat extends React.Component {
   render() {
     const { userId, roomId } = this.state;
     return (
-      <div className="messages d-flex flex-column">
+      <div className="chat">
         <ChatHeader articleId={this.articleId} />
         <Messages articleId={this.articleId} userId={userId} />
         <ChatFooter articleId={this.articleId} />

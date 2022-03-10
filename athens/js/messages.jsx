@@ -13,6 +13,14 @@ export class Messages extends React.Component {
         this.state = { messages: [] };
     }
 
+    scrollToBottom = () => {
+        this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+    }
+
+    componentDidUpdate() {
+        this.scrollToBottom();
+    }
+
     componentDidMount() {
         socket.on("message", msg => {
             this.setState({
@@ -31,6 +39,7 @@ export class Messages extends React.Component {
                 });
             })
             .catch((error) => console.log(error));
+        this.scrollToBottom();
     }
 
     componentWillUnmount() {
@@ -47,14 +56,18 @@ export class Messages extends React.Component {
     render() {
         const { messages } = this.state;
         return (
-            <main role="main" className="container-fluid flex-grow-1 overflow-auto pb-3"
-                style={{ flexDirection: "column-reverse", display: "flex", paddingTop: 140 }}>
+            <div id="messages" className="messages" style={{ overflowY: 'auto' }}>
                 <div className="row m-0 justify-content-center" style={{ width: "100%" }}>
-                    <div className="col-12 p-0">
-                        {messages.map(this.getMessage, this)}
+                    <div id="chat-column" className="chat-column col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 p-0">
+                        <div>
+                            {messages.map(this.getMessage, this)}
+                        </div>
+                        <div style={{ float: "left", clear: "both" }}
+                            ref={(el) => { this.messagesEnd = el; }}>
+                        </div>
                     </div>
                 </div>
-            </main>
+            </div>
         )
     }
 }

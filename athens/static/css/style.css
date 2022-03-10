@@ -98,7 +98,7 @@ html, body {
     /* background-image: url('../images/background.png'); */
     background-color:rgb(255, 128, 111);
     background-position: 60%;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .form-signin {
@@ -133,4 +133,10 @@ html, body {
 
 .navbar-brand {
     font-size: 30px;
+}
+
+.chat-column {
+    background: white;
+    padding-top: 5px !important;
+    padding-bottom: 105px !important;
 }
