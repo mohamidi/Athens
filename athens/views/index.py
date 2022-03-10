@@ -33,7 +33,7 @@ def home_page():
     context = {
         "articles": articles
     }
-    return flask.render_template("index.html", **context)
+    return flask.render_template("test_index.html", **context)
 
 
 @athens.app.route("/favicon.ico")

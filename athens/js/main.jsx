@@ -1,9 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ArticleContainer from './articleContainer';
 import Chat from './chat';
 
 // This method is only called once
+// ReactDOM.render(
+//   <Chat />,
+//   document.getElementById('reactEntry'),
+// );
+
 ReactDOM.render(
-  <Chat />,
-  document.getElementById('reactEntry'),
-);
+  <ArticleContainer />,
+  document.getElementById('reactEntry')
+)
