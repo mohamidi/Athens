@@ -2,38 +2,64 @@
 import json
 import flask
 import athens
-
-
-# error handling or bad codes?
-@athens.app.route('/api/v1/messages/', methods=['GET'])
-def get_messages():
-    """Create a comment for specific post."""
-    connection = athens.model.get_db()
-    cur = connection.execute(
-        "SELECT * FROM messages"
-    )
-    messages = cur.fetchall()
-    context = {
-        "messages": messages
-    }
-    return flask.jsonify(**context), 201
+import athens.api.util as utils
 
 
 @athens.app.route('/api/v1/messages/create/', methods=['POST'])
 def create_message():
-    """Delete a comment."""
+    userId = flask.session.get("userId", 1)
+    articleId = flask.request.args.get("articleId")
+    roomId = utils.get_room_id(userId, articleId)
     message = flask.request.json["message"]
-    userid = flask.request.args.get("userid")
-    roomid = flask.request.args.get("roomid")
     connection = athens.model.get_db()
     connection.execute(
         "INSERT INTO messages(message, user, room) VALUES (?, ?, ?)",
-        (message, userid, roomid)
+        (message, userId, roomId)
     )
     cur = connection.execute(
-        "SELECT * FROM messages"
+        "SELECT * FROM messages WHERE room = ?",
+        (roomId,)
     )
-
     messages = cur.fetchall()
+    for message in messages:
+        cur = connection.execute(
+            "SELECT color FROM users_to_rooms WHERE user = ?",
+            (message["user"],)
+        )
+        message["color"] = cur.fetchone()["color"]
+
+        cur = connection.execute(
+            "SELECT firstname FROM users WHERE id = ?",
+            (message["user"],)
+        )
+        message["firstname"] = cur.fetchone()["firstname"]
     athens.socketIo.send(messages, broadcast=True)
     return flask.jsonify(), 204
+
+
+@athens.app.route('/api/v1/messages/', methods=['GET'])
+def get_messages_for_room():
+    userId = flask.session.get("userId") or 1
+    articleId = flask.request.args.get("articleId")
+    roomId = utils.get_room_id(userId, articleId)
+
+    connection = athens.model.get_db()
+    cur = connection.execute(
+        "SELECT * FROM messages WHERE room = ?",
+        (roomId,)
+    )
+    messages = cur.fetchall()
+    for message in messages:
+        cur = connection.execute(
+            "SELECT color FROM users_to_rooms WHERE user = ?",
+            (message["user"],)
+        )
+        message["color"] = cur.fetchone()["color"]
+
+        cur = connection.execute(
+            "SELECT firstname FROM users WHERE id = ?",
+            (message["user"],)
+        )
+        message["firstname"] = cur.fetchone()["firstname"]
+
+    return flask.jsonify(messages)

@@ -24,7 +24,7 @@ export class ChatFooter extends React.Component {
             body: JSON.stringify({ message: this.state.input }),
             credentials: 'same-origin',
         };
-        const url = '/api/v1/messages/create/?userid=1&roomid=1';
+        const url = '/api/v1/messages/create/?articleId=' + this.props.articleId;
 
         fetch(url, requestOptions)
             .then((response) => {
