@@ -21,7 +21,6 @@ app.config.from_envvar('ATHENS_SETTINGS', silent=True)
 # circular import, which is naughty, but Flask was designed that way.
 # (Reference http://flask.pocoo.org/docs/patterns/packages/)  We're
 # going to tell pylint and pycodestyle to ignore this coding style violation.
-import athens.utils # noqa: E402  pylint: disable=wrong-import-position
 import athens.api  # noqa: E402  pylint: disable=wrong-import-position
 import athens.views  # noqa: E402  pylint: disable=wrong-import-position
 import athens.model  # noqa: E402  pylint: disable=wrong-import-position

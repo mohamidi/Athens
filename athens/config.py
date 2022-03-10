@@ -16,5 +16,8 @@ UPLOAD_FOLDER = ATHENS_ROOT/'var'/'uploads'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 MAX_CONTENT_LENGTH = 16 * 1024 * 1024
 
+# Temporary variable for testing multiple users, remove when login works
+COUNT = 1
+
 # Database file is var/athens.sqlite3
 DATABASE_FILENAME = ATHENS_ROOT/'var'/'athens.sqlite3'

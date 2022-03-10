@@ -7,14 +7,32 @@ class Chat extends React.Component {
   constructor(props) {
     // Initialize mutable state
     super(props);
-    this.articleId = new URLSearchParams(window.location.search).get("article");
+    this.state = { userId: 0, roomId: 0 }
+    this.articleId = new URLSearchParams(window.location.search).get("articleId");
+  }
+
+  componentDidMount() {
+    fetch("http://localhost:8000/api/v1/rooms/?articleId=" + this.articleId,
+      { credentials: 'same-origin' })
+      .then((response) => {
+        if (!response.ok) throw Error(response.statusText);
+        return response.json();
+      })
+      .then((data) => {
+        this.setState({
+          userId: data["userId"],
+          roomId: data["roomId"],
+        });
+      })
+      .catch((error) => console.log(error));
   }
 
   render() {
+    const { userId, roomId } = this.state;
     return (
       <div className="messages d-flex flex-column">
         <ChatHeader articleId={this.articleId} />
-        <Messages articleId={this.articleId} userId={2} />
+        <Messages articleId={this.articleId} userId={userId} />
         <ChatFooter articleId={this.articleId} />
       </div>
     );
