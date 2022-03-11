@@ -3,8 +3,7 @@ import io from "socket.io-client";
 import { ReceivedMessage } from "./receivedMessage"
 import { SentMessage } from "./sentMessage"
 
-let endpoint = "http://localhost:8000"
-let socket = io.connect(endpoint)
+let socket = io()
 
 export class Messages extends React.Component {
     constructor(props) {
@@ -13,73 +12,65 @@ export class Messages extends React.Component {
         this.state = { messages: [] };
     }
 
+    scrollToBottom = () => {
+        this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+    }
+
+    componentDidUpdate() {
+        this.scrollToBottom();
+    }
+
     componentDidMount() {
         socket.on("message", msg => {
+            if (msg["articleId"] != this.props.articleId) {
+                return;
+            }
             this.setState({
-                messages: msg
+                messages: msg["messages"]
             })
         })
-        var mockData = [
-            {
-                message: "This is officially the largest acquisition in video game history. The second largest is Take two acquiring Zynga for almost $13 Billion USD.",
-                firstName: "Justin",
-                userid: 1,
-                color: 0,
-            },
-            {
-                message: "This excerpt about the Metaverse is interesting. Seems like competition will make it a reality more than consumer demand.",
-                firstName: "Hasan",
-                userid: 2,
-                color: 1,
-            },
-            {
-                message: "I noticed that as well. I just recently read this article about Apple's hidden plans for a Metaverse. I'm curious if all of these different Metaverses will remain separate or eventually combine into one.",
-                firstName: "Muhammad",
-                userid: 3,
-                color: 2,
-            },
-            {
-                message: "Short message",
-                firstName: "Justin",
-                userid: 1,
-                color: 0,
-            }
-        ]
-        this.setState({
-            messages: mockData
-        });
-        // fetch("http://localhost:8000/api/v1/messages/", { credentials: 'same-origin' })
-        //     .then((response) => {
-        //         if (!response.ok) throw Error(response.statusText);
-        //         return response.json();
-        //     })
-        //     .then((data) => {
-        //         this.setState({
-        //             messages: data["messages"]
-        //         });
-        //     })
-        //     .catch((error) => console.log(error));
+        fetch("/api/v1/messages/?articleId=" + this.props.articleId,
+            { credentials: 'same-origin' })
+            .then((response) => {
+                if (!response.ok) throw Error(response.statusText);
+                return response.json();
+            })
+            .then((data) => {
+                this.setState({
+                    messages: data
+                });
+            })
+            .catch((error) => console.log(error));
+        this.scrollToBottom();
+    }
+
+    componentWillUnmount() {
+        socket.disconnect()
     }
 
     getMessage(message, i) {
-        if (1 == message["userid"]) {
-            return <SentMessage message={message} i={i} />
+        const { messages } = this.state;
+        if (message["user"] == this.props.userId) {
+            return <SentMessage message={message} i={i} includeIcon={i == 0 || message["user"] != messages[i - 1]["user"]} />
         }
-        return <ReceivedMessage message={message} i={i} />
-        //return <p className="m-0" key={i}>{message["message"]}</p>
+        return <ReceivedMessage message={message} i={i} includeIcon={i == 0 || message["user"] != messages[i - 1]["user"]} />
     }
 
     render() {
         const { messages } = this.state;
         return (
-            <main role="main" className="container-fluid flex-grow-1 overflow-auto pb-3"
-                style={{ flexDirection: "column-reverse", display: "flex", paddingTop: 140 }}>
+            <div id="messages" className="messages" style={{ overflowY: 'auto' }}>
                 <div className="row m-0 justify-content-center" style={{ width: "100%" }}>
-                    <div className="col-12 p-0">
-                        {messages.map(this.getMessage)}
+                    <div id="chat-column" className="chat-column col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 p-0">
+                        <div>
+                            {messages.map(this.getMessage, this)}
+                        </div>
+                        <div style={{ float: "left", clear: "both" }}
+                            ref={(el) => { this.messagesEnd = el; }}>
+                        </div>
                     </div>
                 </div>
-            </main>
+            </div>
         )
     }
 }

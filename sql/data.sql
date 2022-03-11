@@ -3,7 +3,11 @@
 INSERT INTO users(email, firstname, lastname, password)
 VALUES ("jushutch@umich.edu", "Justin", "Hutchins", "password");
 
-INSERT INTO rooms DEFAULT VALUES;
+INSERT INTO users(email, firstname, lastname, password)
+VALUES ("hasan@umich.edu", "Hasan", "Hutchins", "password");
+
+INSERT INTO users(email, firstname, lastname, password)
+VALUES ("mohamed@umich.edu", "Mohamed", "Hutchins", "password");
 
 INSERT INTO articles(title, publisher, tag, image_url, url)
 VALUES ("Microsoft to acquire Activision Blizzard for $68.7 billion", "The Verge", "Technology", "",
@@ -21,8 +25,10 @@ INSERT INTO articles(title, publisher, tag, image_url, url)
 VALUES ("Microsoft to acquire Activision Blizzard for $68.7 billion", "The Verge", "Technology", "",
 "https://www.theverge.com/2022/1/18/22889258/microsoft-activision-blizzard-xbox-acquisition-call-of-duty-overwatch");
 
-INSERT INTO users_to_rooms(user, room)
-VALUES (1, 1);
+INSERT INTO rooms(article_id) VALUES (1);
+
+INSERT INTO users_to_rooms(user, room, color)
+VALUES (1, 1, 0);
 
 INSERT INTO messages(message, user, room)
 VALUES ("This article is awesome!", 1, 1);

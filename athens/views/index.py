@@ -15,7 +15,7 @@ from athens import utils
 @athens.app.route('/')
 def show_index():
     """Route to homepage or login"""
-    logged_in_user = flask.session.get('username')
+    logged_in_user = flask.session.get('userId')
 
     if not logged_in_user:
         return flask.redirect(flask.url_for('login'))
@@ -23,7 +23,7 @@ def show_index():
         return flask.redirect(flask.url_for('home_page'))
 
 
-@athens.app.route('/home')
+@athens.app.route('/home/')
 def home_page():
     connection = athens.model.get_db()
     cur = connection.execute(

@@ -1,9 +1,9 @@
 import React from 'react';
 import { COLORS } from './constants';
 
-export const SentMessage = ({ message, i }) => {
+export const SentMessage = ({ message, i, includeIcon }) => {
     return (
-        <div key="i" className="pb-1">
+        <div key={i} className="pb-1">
             <div className="row justify-content-right m-0">
                 <div className="col-2 p-0"></div>
                 <div className="col p-0 d-inline-flex flex-row-reverse">
@@ -12,9 +12,11 @@ export const SentMessage = ({ message, i }) => {
                     </div>
                 </div>
                 <div className="col-2 p-0 d-flex justify-content-center">
-                    <div className={"circle d-inline-flex justify-content-center align-items-center " + COLORS[message["color"]]}>
-                        <span>{message["firstName"][0]}</span>
-                    </div>
+                    {includeIcon &&
+                        <div className={"circle d-inline-flex justify-content-center align-items-center " + COLORS[message["color"]]}>
+                            <span>{message["firstname"][0]}</span>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

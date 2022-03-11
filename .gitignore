@@ -3,6 +3,7 @@ node_modules/
 cookies.txt
 bundle.js
 session.json
+eecs441deploy.pem
 
 # Python
 *.pyc

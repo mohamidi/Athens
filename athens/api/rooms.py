@@ -1,18 +1,14 @@
-"""REST API for comments."""
-import json
 import flask
 import athens
+import athens.api.util as utils
 
 
-# error handling or bad codes?
 @athens.app.route('/api/v1/rooms/', methods=['GET'])
-def get_rooms():
-    connection = athens.model.get_db()
-    cur = connection.execute(
-        "SELECT * FROM users"
-    )
-    rooms = cur.fetchall()
+def get_room_info():
+    articleId = flask.request.args.get("articleId")
+    userId = flask.session.get("userId", 1)
     context = {
-        "rooms": rooms
+        "userId": userId,
+        "roomId": utils.get_room_id(userId, articleId)
     }
-    return flask.jsonify(**context), 201
+    return flask.jsonify(context)

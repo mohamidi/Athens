@@ -3,10 +3,15 @@
 <!-- Header -->
 <nav class="navbar bg-white">
     <div class="container-fluid justify-content-center title">
+<<<<<<< HEAD
         <a href="{{url_for('home_page')}}">
             <img src="static/images/logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
             Athens
         </a>
+=======
+        <img src="/static/images/logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
+        Athens
+>>>>>>> 49d2d3c0bce538eec70aee811a5c9d5c98351fe8
     </div>
 </nav>
 <hr class="m-0" />
@@ -14,7 +19,7 @@
 <ul class="list-group list-group-flush">
     {% for article in articles %}
     <li class="list-group-item">
-        <a href="/room/?article={{article.id}}">
+        <a href="/room/?articleId={{article.id}}">
             <div class="card border-0">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-10 col-sm-6 col-md-4 p-1">

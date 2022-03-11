@@ -7,12 +7,12 @@ class Chat extends React.Component {
   constructor(props) {
     // Initialize mutable state
     super(props);
-    this.state = { messages: [], article: {}, members: [], roomid: 0, userid: 0 };
-    this.articleId = new URLSearchParams(window.location.search).get("article");
+    this.state = { userId: 0, roomId: 0 }
+    this.articleId = new URLSearchParams(window.location.search).get("articleId");
   }
 
   componentDidMount() {
-    fetch("http://localhost:8000/api/v1/room/?article=" + this.articleId,
+    fetch("/api/v1/rooms/?articleId=" + this.articleId,
       { credentials: 'same-origin' })
       .then((response) => {
         if (!response.ok) throw Error(response.statusText);
@@ -20,23 +20,22 @@ class Chat extends React.Component {
       })
       .then((data) => {
         this.setState({
-          messages: data["messages"],
-          members: data["members"],
-          article: data["article"],
-          userid: data["userid"],
-          roomid: data["roomid"]
+          userId: data["userId"],
+          roomId: data["roomId"],
         });
       })
       .catch((error) => console.log(error));
   }
 
   render() {
-    const { messages, article, members, roomid, userid } = this.state;
-    <div className="messages d-flex flex-column">
-      <ChatHeader articleData={article} members={members} />
-      <Messages messages={messages} members={members} />
-      <ChatFooter roomid={roomid} userid={userid} />
-    </div>
+    const { userId, roomId } = this.state;
+    return (
+      <div className="chat">
+        <ChatHeader articleId={this.articleId} />
+        <Messages articleId={this.articleId} userId={userId} />
+        <ChatFooter articleId={this.articleId} />
+      </div>
+    );
   }
 }
 

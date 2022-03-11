@@ -1,6 +1,8 @@
 import React from 'react';
 import { COLORS } from './constants';
+import io from "socket.io-client";
 
+let socket = io();
 export class Members extends React.Component {
     constructor(props) {
         // Initialize mutable state
@@ -9,37 +11,24 @@ export class Members extends React.Component {
     }
 
     componentDidMount() {
-        var mockData = [
-            {
-                firstName: "Justin",
-                userid: 1,
-                color: 0,
-            },
-            {
-                firstName: "Hasan",
-                userid: 2,
-                color: 1,
-            },
-            {
-                firstName: "Muhammad",
-                userid: 3,
-                color: 2,
-            }
-        ];
-        this.setState({
-            members: mockData
+        socket.on("member-added", members => {
+            this.setState({
+                members: members
+            });
         })
-        // fetch("http://localhost:8000/api/v1/rooms/", { credentials: 'same-origin' })
-        //     .then((response) => {
-        //         if (!response.ok) throw Error(response.statusText);
-        //         return response.json();
-        //     })
-        //     .then((data) => {
-        //         this.setState({
-        //             rooms: data["rooms"]
-        //         });
-        //     })
-        //     .catch((error) => console.log(error));
+        fetch("/api/v1/members/?articleId=" + this.props.articleId,
+            { credentials: 'same-origin' })
+            .then((response) => {
+                if (!response.ok) throw Error(response.statusText);
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data)
+                this.setState({
+                    members: data
+                });
+            })
+            .catch((error) => console.log(error));
     }
 
     render() {
@@ -48,8 +37,8 @@ export class Members extends React.Component {
             <div className="members">
                 <div style={{ textAlign: "center" }}>
                     {members.map((member, i) => (
-                        <div className={"circle d-inline-flex ms-1 me-1 justify-content-center align-items-center " + COLORS[member["color"]]}>
-                            <span>{member["firstName"][0]}</span>
+                        <div key={i} className={"circle d-inline-flex ms-1 me-1 justify-content-center align-items-center " + COLORS[member["color"]]}>
+                            <span>{member["firstname"][0]}</span>
                         </div>
                     ))}
                 </div>
