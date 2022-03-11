@@ -1,6 +1,9 @@
 import React from 'react';
 import { COLORS } from './constants';
+import io from "socket.io-client";
 
+let endpoint = "http://localhost:8000";
+let socket = io.connect(endpoint);
 export class Members extends React.Component {
     constructor(props) {
         // Initialize mutable state
@@ -9,6 +12,11 @@ export class Members extends React.Component {
     }
 
     componentDidMount() {
+        socket.on("member-added", members => {
+            this.setState({
+                members: members
+            });
+        })
         fetch("http://localhost:8000/api/v1/members/?articleId=" + this.props.articleId,
             { credentials: 'same-origin' })
             .then((response) => {

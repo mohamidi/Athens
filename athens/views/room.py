@@ -7,6 +7,7 @@ URLs include:
 import flask
 import athens
 import athens.api.util as utils
+import athens.views.utils as roomUtils
 
 
 @athens.app.route('/room/')
@@ -19,43 +20,5 @@ def render_room():
         roomId = utils.get_room_id(userId, articleId)
         return flask.render_template("room.html")
     except Exception as e:
-        connection = athens.model.get_db()
-        query = """SELECT room, COUNT() as members FROM users_to_rooms 
-        JOIN rooms ON rooms.id = users_to_rooms.room 
-        WHERE rooms.article_id = ? GROUP BY rooms.id"""
-        cur = connection.execute(
-            query,
-            (articleId,)
-        )
-        openRooms = cur.fetchall()
-
-        # Add user to existing room if possible
-        for room in openRooms:
-            if room["members"] < 5:
-                roomId = room["room"]
-                color = int(room["members"])
-                query = """INSERT INTO users_to_rooms(user, room, color)
-                    VALUES (?, ?, ?)"""
-                cur = connection.execute(
-                    query,
-                    (userId, roomId, color)
-                )
-                return flask.render_template("room.html")
-
-        # Create new room
-        query = """INSERT INTO rooms(article_id)
-        VALUES (?)"""
-        cur = connection.execute(
-            query,
-            (articleId,)
-        )
-        newRoomId = cur.lastrowid
-
-        # Add user to new room
-        query = """INSERT INTO users_to_rooms(user, room, color)
-        VALUES (?, ?, ?)"""
-        cur = connection.execute(
-            query,
-            (userId, newRoomId, 0)
-        )
+        roomUtils.add_user_to_room(userId, articleId)
         return flask.render_template("room.html")
