@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 <!-- Header -->
-<nav class="navbar bg-white">
-    <div class="container-fluid justify-content-center title">
-        <img src="static/images/logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
-        Athens
+<nav class="headerbar navbar bg-white">
+    <div class="profilepic col-xs-2">
+        <div class="dot"><p>A</p></div>
     </div>
+    <div class="container justify-content-center title">
+        <img src="/static/images/logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
+        Athens
+     </div>
 </nav>
 <hr class="m-0" />
 <!-- List all of the articles -->
@@ -35,5 +38,23 @@
     </li>
     {% endfor %}
 </ul>
+<div class="signout">
+    <form method="POST" action="/api/v1/signout/">
+        <button class="signout-button" type="submit">Sign out</button>
+    </form>
+</div>
+<script>
+    $( document ).ready(function() {
+        fetch('/api/v1/info/')
+        .then(response => {
+            return response.json()
+        })
+        .then(message => {
+            letter = message['firstname'][0].toUpperCase()
+            $('.profilepic p').html(letter);
+        });
+
+    });
+</script>
 
 {% endblock content %}

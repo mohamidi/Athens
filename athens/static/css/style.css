@@ -107,16 +107,22 @@ html, body {
     color: gray;
 }
 
-.form-signin h4 {
+.form-signup {
+    position: relative;
+    top: 25vh;
+    color: gray;
+}
+
+.form-signin h4, .form-signup h4 {
     color: #CC4A4A;
 }
 
-.form-signin button {
+.form-signin button, .form-signup button {
     background-color: #CC4A4A;
     color: white;
 }
 
-.form-signin p {
+.form-signin p, .form-signup p {
     font-size: 14px;
     color: gray;
 }
@@ -140,3 +146,46 @@ html, body {
     padding-top: 5px !important;
     padding-bottom: 105px !important;
 }
+
+.profilepic {
+    position: absolute;
+    left: 87%;
+    top: 20%;
+    z-index: 1;
+}
+
+.dot {
+    height: 40px;
+    width: 40px;
+    background-color: #f3f3f3;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 27px;
+    text-align: center;
+    font-weight: 600;
+    color: #CC4A4A;
+    border: solid 1px #CC4A4A;
+  }
+
+  .dot p {
+    position: relative;
+    top: -3%;
+  }
+
+  .signout-button {
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  }
+
+  .signout {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      position: absolute;
+      top: 95%;
+  }

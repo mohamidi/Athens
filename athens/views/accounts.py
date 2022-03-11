@@ -17,7 +17,7 @@ def login():
     """Login page"""
     return flask.render_template("login.html")
 
-
+@athens.app.route('/signup/')
 def signup():
     """Sign-up page"""
-    return flask.render_template('create.html')
+    return flask.render_template('signup.html')

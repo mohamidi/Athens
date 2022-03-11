@@ -25,40 +25,39 @@
         crossorigin="anonymous"></script>
 
     <div class="container-fluid"></div>
-    <div class="text-center mb-0 title sign-in-logo">
+    <div class="text-center mb-2 title sign-in-logo">
         <img src="/static/images/logo.png" alt="" width="40" height="40" class="d-inline-block align-text-top">
         Athens
     </div>
 
     <div class="row">
-        <main class="form-signin d-flex align-items-center justify-content-center">
-            <form class="container-fluid justify-content-center my-auto w-100" method="post" action="/api/v1/login/">
+        <main class="form-signup d-flex align-items-center justify-content-center">
+            <form class="container-fluid justify-content-center my-auto w-100" method="post" action="/api/v1/signup/">
                 <div class="row">
                     <div class="col"></div>
                     <div class="col-lg-5 col-md-10 col-sm-10">
+                        <div class="form-floating mb-2">
+                            <input name="firstname" class="form-control" id="floatingInput"
+                                placeholder="First Name">
+                            <label for="floatingInput">First Name</label>
+                        </div>
+                        <div class="form-floating mb-2">
+                            <input name="lastname" class="form-control" id="floatingInput"
+                                placeholder="Last Name">
+                            <label for="floatingInput">Last Name</label>
+                        </div>
                         <div class="form-floating mb-2">
                             <input type="email" name="email" class="form-control" id="floatingInput"
                                 placeholder="Email">
                             <label for="floatingInput">Email</label>
                         </div>
-                        <div class="form-floating mb-2">
+                        <div class="form-floating mb-4">
                             <input type="password" name="password" class="form-control" id="floatingPassword"
                                 placeholder="Password">
                             <label for="floatingPassword">Password</label>
                         </div>
-
-                        <div class="checkbox mb-4">
-                            <label>
-                                <input type="checkbox" value="remember-me"> Remember me
-                            </label>
-                        </div>
-                        <button class="w-100 btn btn-lg mb-4" type="submit">Sign in</button>
+                        <button class="w-100 btn btn-lg mb-2" type="submit">Sign up</button>
                         <hr class="mb-4 mx-auto" size="3" width="90%">
-                        <div class="text-center">
-                            <a href="/signup/">
-                                <p>Don't have an account? Sign up</p>
-                            </a>
-                        </div>
                     </div>
                     <div class="col"></div>
                 </div>
