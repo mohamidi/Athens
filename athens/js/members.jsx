@@ -2,8 +2,7 @@ import React from 'react';
 import { COLORS } from './constants';
 import io from "socket.io-client";
 
-let endpoint = "http://localhost:8000";
-let socket = io.connect(endpoint);
+let socket = io();
 export class Members extends React.Component {
     constructor(props) {
         // Initialize mutable state
@@ -17,7 +16,7 @@ export class Members extends React.Component {
                 members: members
             });
         })
-        fetch("http://localhost:8000/api/v1/members/?articleId=" + this.props.articleId,
+        fetch("/api/v1/members/?articleId=" + this.props.articleId,
             { credentials: 'same-origin' })
             .then((response) => {
                 if (!response.ok) throw Error(response.statusText);

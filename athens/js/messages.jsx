@@ -3,8 +3,7 @@ import io from "socket.io-client";
 import { ReceivedMessage } from "./receivedMessage"
 import { SentMessage } from "./sentMessage"
 
-let endpoint = "http://localhost:8000"
-let socket = io.connect(endpoint)
+let socket = io()
 
 export class Messages extends React.Component {
     constructor(props) {
@@ -30,7 +29,7 @@ export class Messages extends React.Component {
                 messages: msg["messages"]
             })
         })
-        fetch("http://localhost:8000/api/v1/messages/?articleId=" + this.props.articleId,
+        fetch("/api/v1/messages/?articleId=" + this.props.articleId,
             { credentials: 'same-origin' })
             .then((response) => {
                 if (!response.ok) throw Error(response.statusText);

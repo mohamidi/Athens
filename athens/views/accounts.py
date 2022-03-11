@@ -12,7 +12,7 @@ from athens import utils
 import athens.config as config
 
 
-@athens.app.route('/login')
+@athens.app.route('/login/')
 def login():
     """Login page"""
     return flask.render_template("login.html")

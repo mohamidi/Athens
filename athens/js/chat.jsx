@@ -12,7 +12,7 @@ class Chat extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:8000/api/v1/rooms/?articleId=" + this.articleId,
+    fetch("/api/v1/rooms/?articleId=" + this.articleId,
       { credentials: 'same-origin' })
       .then((response) => {
         if (!response.ok) throw Error(response.statusText);

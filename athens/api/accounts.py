@@ -15,8 +15,8 @@ def process_login():
     )
     userId = cur.fetchone()
     if userId is None:
-        return flask.redirect("http://localhost:8000/login"), 500
+        return flask.redirect("/login/"), 500
     userId = userId["id"]
     flask.session["userId"] = userId
 
-    return flask.redirect("http://localhost:8000/home")
+    return flask.redirect("/home/")
