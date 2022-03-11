@@ -11,49 +11,46 @@ class Article extends React.Component {
     super(props);
     if (props.articleData) {
       this.state = {
-        title: props.articleData.title, 
+        headline: props.articleData.headline, 
         source: props.articleData.source,
-        author: props.articleData.author,
         category: props.articleData.category,
-        publishedDate: props.articleData.publishedDate,
+        date_published: props.articleData.date_published,
         url: props.articleData.url, 
-        thumbnailUrl: props.articleData.thumbnailUrl, 
+        thumbnail: props.articleData.thumbnail, 
       };
     } else {
       this.state = {
-        title: '', 
+        headline: '', 
         source: '',
-        author: '',
         category: '',
-        publishedDate: '',
+        date_published: '',
         url: '', 
-        thumbnailUrl: '', 
+        thumbnail: '', 
       };
     }
   }
 
   render() {
     const {
-      title, source, author, category, publishedDate, url, thumbnailUrl
+      headline, source, category, date_published, url, thumbnail
     } = this.state;
 
     return (
       <div className="article">
         <ArticleHeader
-          title={title}
+          headline={headline}
           source={source}
-          author={author}
           category={category}
-          publishedDate={publishedDate}
+          date_published={date_published}
           url={url}
-          thumbnailUrl={thumbnailUrl}
+          thumbnail={thumbnail}
         />
       </div>
     );
   }
 }
 
-Article.PropTypes = {
+Article.propTypes = {
   articleData: PropTypes.objectOf(PropTypes.any).isRequired
 };
 

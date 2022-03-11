@@ -11,10 +11,10 @@ class ArticleContainer extends React.Component{
   }
 
   componentDidMount() {
-    fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=c8f65982aa0c4d05bba8517c9cd4d34f', { credentials: 'same-origin' })
+    fetch('/api/v1/articles/', { credentials: 'same-origin' })
     .then((response) => response.json()).then((data) => {
       this.setState((previousState) => ({
-        articles: data.sources
+        articles: data.articles
       }));
       this.saveState();
     }).catch((exception) => {
@@ -24,7 +24,7 @@ class ArticleContainer extends React.Component{
 
   render() {
     const { articles } = this.state;
-    const articleList = articles.map((article) => <Article key={article.title} articleData={article} />)
+    const articleList = articles.map((article) => <Article key={article.headline} articleData={article} />)
     return(
       <div id="articleContainer">
         {articleList}
