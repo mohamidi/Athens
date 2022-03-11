@@ -23,8 +23,11 @@ export class Messages extends React.Component {
 
     componentDidMount() {
         socket.on("message", msg => {
+            if (msg["articleId"] != this.props.articleId) {
+                return;
+            }
             this.setState({
-                messages: msg
+                messages: msg["messages"]
             })
         })
         fetch("http://localhost:8000/api/v1/messages/?articleId=" + this.props.articleId,

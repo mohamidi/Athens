@@ -33,7 +33,11 @@ def create_message():
             (message["user"],)
         )
         message["firstname"] = cur.fetchone()["firstname"]
-    athens.socketIo.send(messages, broadcast=True)
+    context = {
+        "messages": messages,
+        "articleId": articleId,
+    }
+    athens.socketIo.emit("message", context)
     return flask.jsonify(), 204
 
 
