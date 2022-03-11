@@ -1,4 +1,5 @@
 """athens package initializer."""
+from werkzeug.middleware.proxy_fix import ProxyFix
 import flask
 from flask_socketio import SocketIO
 
@@ -16,6 +17,8 @@ app.config.from_object('athens.config')
 # EXAMPLE:
 # $ export ATHENS_SETTINGS=secret_key_config.py
 app.config.from_envvar('ATHENS_SETTINGS', silent=True)
+
+app = ProxyFix(app)
 
 # Tell our app about views and model.  This is dangerously close to a
 # circular import, which is naughty, but Flask was designed that way.
