@@ -1,17 +1,13 @@
-<<<<<<< HEAD
 from dateutil import parser
 from datetime import datetime, timezone
 import requests
 import json
 import time
-=======
->>>>>>> 49d2d3c0bce538eec70aee811a5c9d5c98351fe8
 import flask
 import athens
 
 
 @athens.app.route('/api/v1/articles/', methods=['GET'])
-<<<<<<< HEAD
 def format_api():
 	context = {'articles':[]}
 	
@@ -56,7 +52,6 @@ def format_api():
 
 	return flask.jsonify(**context)
 	
-=======
 def get_article():
     articleId = flask.request.args.get("articleId")
 
@@ -66,4 +61,3 @@ def get_article():
         (articleId,)
     )
     return flask.jsonify(cur.fetchone())
->>>>>>> 49d2d3c0bce538eec70aee811a5c9d5c98351fe8
