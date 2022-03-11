@@ -23,7 +23,7 @@ def show_index():
         return flask.redirect(flask.url_for('home_page'))
 
 
-@athens.app.route('/home')
+@athens.app.route('/home/')
 def home_page():
     connection = athens.model.get_db()
     cur = connection.execute(
