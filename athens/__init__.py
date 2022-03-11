@@ -18,7 +18,7 @@ app.config.from_object('athens.config')
 # $ export ATHENS_SETTINGS=secret_key_config.py
 app.config.from_envvar('ATHENS_SETTINGS', silent=True)
 
-app = ProxyFix(app)
+app.wsgi_app = ProxyFix(app.wsgi_app)
 
 # Tell our app about views and model.  This is dangerously close to a
 # circular import, which is naughty, but Flask was designed that way.
