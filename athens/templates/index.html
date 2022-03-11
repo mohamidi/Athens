@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 <!-- Header -->
-<nav class="headerbar navbar bg-white">
+
+<nav class="navbar bg-white">
     <div class="profilepic col-xs-2">
         <div class="dot"><p>A</p></div>
     </div>
-    <div class="container justify-content-center title">
-        <img src="/static/images/logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
-        Athens
+    <div class="container-fluid justify-content-center title">
+        <a href="{{url_for('home_page')}}">
+            <img src="/static/images/logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
+            Athens
+        </a>
      </div>
 </nav>
 <hr class="m-0" />
@@ -43,7 +46,12 @@
         <button class="signout-button" type="submit">Sign out</button>
     </form>
 </div>
-<script>
+<div id="reactEntry">Loading ...</div>
+<!-- Load JavaScript -->
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename='js/bundle.js') }}"
+>
     $( document ).ready(function() {
         fetch('/api/v1/info/')
         .then(response => {
@@ -56,5 +64,4 @@
 
     });
 </script>
-
 {% endblock content %}
