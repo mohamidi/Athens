@@ -11,39 +11,42 @@ class Article extends React.Component {
     super(props);
     if (props.articleData) {
       this.state = {
-        headline: props.articleData.headline, 
-        source: props.articleData.source,
-        category: props.articleData.category,
+        id: props.articleData.id,
+        title: props.articleData.title, 
+        publisher: props.articleData.publisher,
+        tag: props.articleData.tag,
         date_published: props.articleData.date_published,
         url: props.articleData.url, 
-        thumbnail: props.articleData.thumbnail, 
+        image_url: props.articleData.image_url, 
       };
     } else {
       this.state = {
-        headline: '', 
-        source: '',
-        category: '',
+        id: 0,
+        title: '', 
+        publisher: '',
+        tag: '',
         date_published: '',
         url: '', 
-        thumbnail: '', 
+        image_url: '', 
       };
     }
   }
 
   render() {
     const {
-      headline, source, category, date_published, url, thumbnail
+      id, title, publisher, tag, date_published, url, image_url
     } = this.state;
 
     return (
       <div className="article">
         <ArticleHeader
-          headline={headline}
-          source={source}
-          category={category}
+          id={id}
+          title={title}
+          publisher={publisher}
+          tag={tag}
           date_published={date_published}
           url={url}
-          thumbnail={thumbnail}
+          image_url={image_url}
         />
       </div>
     );

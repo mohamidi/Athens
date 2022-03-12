@@ -57,3 +57,8 @@ CREATE TABLE users_to_trophies (
   FOREIGN KEY (user) REFERENCES users(id) ON DELETE CASCADE,
   FOREIGN KEY (trophy) REFERENCES trophies(id) ON DELETE CASCADE
 );
+
+CREATE TABLE update_articles(
+  id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  last_update DATE NOT NULL
+);

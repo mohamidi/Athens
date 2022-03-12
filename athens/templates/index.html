@@ -14,39 +14,12 @@
      </div>
 </nav>
 <hr class="m-0" />
-<!-- List all of the articles -->
-<ul class="list-group list-group-flush">
-    {% for article in articles %}
-    <li class="list-group-item">
-        <a href="/room/?articleId={{article.id}}">
-            <div class="card border-0">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-10 col-sm-6 col-md-4 p-1">
-                        <div class="card-body p-0">
-                            <h5 class="card-title headline mb-0">{{article.title}}</h5>
-                            <p class="card-text article-details">
-                                {{article.publisher}} ~ 2 Hours Ago
-                                <span class="badge rounded-pill bg-primary">{{article.tag}}</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-2 col-sm-1 p-0">
-                        <div style="background-image:url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fs1.ibtimes.com%2Fsites%2Fwww.ibtimes.com%2Ffiles%2Fstyles%2Ffull%2Fpublic%2F2018%2F03%2F13%2Fmicrosoft_0.jpg&f=1&nofb=1')"
-                            class="thumbnail rounded" />
-                    </div>
-                </div>
-            </div>
-            </div>
-        </a>
-    </li>
-    {% endfor %}
-</ul>
 <div class="signout">
     <form method="POST" action="/api/v1/signout/">
         <button class="signout-button" type="submit">Sign out</button>
     </form>
 </div>
-<div id="reactEntry">Loading ...</div>
+<div id="reactArticles">Loading ...</div>
 <!-- Load JavaScript -->
 <script
   type="text/javascript"

@@ -1,15 +1,24 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import ReactDOM from 'react-dom';
 import ArticleContainer from './articleContainer';
 import Chat from './chat';
 
-// This method is only called once
-// ReactDOM.render(
-//   <Chat />,
-//   document.getElementById('reactEntry'),
-// );
+function LoadReact(props){
+  const home = "/home/";
+  const room = "/room/";
+  if(window.location.pathname == home) {
+    ReactDOM.render(
+      <ArticleContainer />,
+      document.getElementById('reactArticles')
+    )
+  }
+  else if(window.location.pathname == room){
+    ReactDOM.render(
+      <Chat />,
+      document.getElementById('reactChat')
+    )
+  }
+}
 
-ReactDOM.render(
-  <ArticleContainer />,
-  document.getElementById('reactEntry')
-)
+LoadReact();
+

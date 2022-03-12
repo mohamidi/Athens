@@ -24,7 +24,7 @@ class ArticleContainer extends React.Component{
 
   render() {
     const { articles } = this.state;
-    const articleList = articles.map((article) => <Article key={article.headline} articleData={article} />)
+    const articleList = articles.map((article) => <Article key={article.id} articleData={article} />)
     return(
       <div id="articleContainer">
         {articleList}

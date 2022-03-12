@@ -41,3 +41,6 @@ VALUES ("temp", "temp", "The first trophy!");
 
 INSERT INTO users_to_trophies(user, trophy)
 VALUES (1, 1);
+
+INSERT INTO update_articles(last_update)
+VALUES ('2020-01-01');
