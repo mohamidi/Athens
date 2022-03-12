@@ -32,8 +32,14 @@ class Chat extends React.Component {
     return (
       <div className="chat">
         <ChatHeader articleId={this.articleId} />
-        <Messages articleId={this.articleId} userId={userId} />
-        <ChatFooter articleId={this.articleId} />
+        <div className="container">
+          <div className="row">
+            <Messages articleId={this.articleId} userId={userId} />
+          </div>
+          <div className="row">
+            <ChatFooter articleId={this.articleId} />
+          </div>
+        </div>
       </div>
     );
   }

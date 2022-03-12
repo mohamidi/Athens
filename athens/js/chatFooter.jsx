@@ -43,7 +43,7 @@ export class ChatFooter extends React.Component {
 
     render() {
         return (
-            <div className="bg-white fixed-bottom">
+            <div className="bg-white fixed-bottom container">
                 <hr className="mt-0" />
                 <div className="row justify-content-center pb-5">
                     <div className="col-10 col-sm-8 col-md-6 col-lg-4 d-flex justify-content-center align-middle">

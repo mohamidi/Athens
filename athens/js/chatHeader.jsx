@@ -34,9 +34,11 @@ export class ChatHeader extends React.Component {
                     </a>
                 </h1>
                 <hr className="mt-0 mb-1" />
-                <div className="row">
-                    <div className="col">
-                        <Members articleId={this.props.articleId} />
+                <div className="container">
+                    <div className="row">
+                        <div className="col">
+                            <Members articleId={this.props.articleId} />
+                        </div>
                     </div>
                 </div>
                 <hr className="mt-1 mb-0" />

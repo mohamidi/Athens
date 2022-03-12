@@ -6,7 +6,7 @@ export const SentMessage = ({ message, i, includeIcon }) => {
         <div key={i} className="pb-1">
             <div className="row justify-content-right m-0">
                 <div className="col-2 p-0"></div>
-                <div className="col p-0 d-inline-flex flex-row-reverse">
+                <div className="col p-0 text-break d-inline-flex flex-row-reverse">
                     <div className="alert alert-primary d-inline-flex m-0 p-1 ps-2 pe-2">
                         <span>{message["message"]}</span>
                     </div>
