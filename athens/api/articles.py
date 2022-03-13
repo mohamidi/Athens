@@ -41,6 +41,7 @@ def update_articles():
 
         response = requests.get(search_url, headers=headers, params=params)
         response.raise_for_status()
+        time.sleep(0.35)
         search_results = response.json()
         for i in range(0, 2):
             result = search_results['value'][i]
