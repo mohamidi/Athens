@@ -1,30 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { TAG_TO_COLOR } from './constants';
 
 function ArticleHeader(props) {
-  const {
-    id, title, publisher, tag, created, url, image_url
-  } = props
-  let roomLink = "/room/?articleId=" + id.toString();
-  return (
-    <li className="list-group-item">
-          <div className="card border-0">
-            <div className="row align-items-center justify-content-center">
-              <div className="col-10 col-sm-6 col-md-4 p-1">
-                <div className="card-body p-0">
-                  <h5 className="card-title headline mb-0">{title}</h5>
-                  <p className="card-text article-details">
-                    {publisher} ~ {created} &nbsp;
-                    <span className="badge rounded-pill bg-primary">{tag}</span>
-                  </p>
+    const {
+        id, title, publisher, tag, created, url, image_url
+    } = props
+    let roomLink = "/room/?articleId=" + id.toString();
+    return (
+        <li className="list-group-item">
+            <a href={roomLink}>
+                <div className="card border-0">
+                    <div className="row align-items-center justify-content-center">
+                        <div className="col-10 col-sm-6 col-md-4 p-1">
+                            <div className="card-body p-0">
+                                <h5 className="card-title headline mb-0">{title}</h5>
+                                <p className="card-text article-details">
+                                    {publisher} ~ {created} &nbsp;
+                                    <span className={"badge rounded-pill " + TAG_TO_COLOR[tag]}>{tag}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div className="col-2 col-sm-1 p-0">
+                            <div style={{ backgroundImage: 'url(' + image_url + ')' }}
+                                className="thumbnail rounded" />
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div className="col-2 col-sm-1 p-0">
-                <div style={{ backgroundImage: 'url(' + image_url + ')' }}
-                  className="thumbnail rounded" />
-              </div>  
-            </div>
-            <div className="row align-items-center justify-content-center">
+            </a>
+
+            {/* <div className="row align-items-center justify-content-center">
               <div className="col-5 col-sm-3 col-md-2 p-1">
                 <a href={url}>
                   <button className="btn btn-outline-success" style={{width: "100%"}}>
@@ -40,20 +45,20 @@ function ArticleHeader(props) {
                 </a>
               </div>
               
-            </div>
-          </div>
-      </li>
-  );
+            </div> */}
+
+        </li>
+    );
 }
 
 ArticleHeader.prototype = {
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  publisher: PropTypes.string.isRequired,
-  tag: PropTypes.string.isRequired,
-  created: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  image_url: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    publisher: PropTypes.string.isRequired,
+    tag: PropTypes.string.isRequired,
+    created: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    image_url: PropTypes.string.isRequired,
 };
 
 export default ArticleHeader;

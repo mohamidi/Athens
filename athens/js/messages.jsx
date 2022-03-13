@@ -59,7 +59,7 @@ export class Messages extends React.Component {
     render() {
         const { messages } = this.state;
         return (
-            <div id="messages" className="messages" style={{ overflowY: 'auto' }}>
+            <div id="messages" className="messages p-0" style={{ overflowY: 'auto' }}>
                 <div className="row m-0 justify-content-center" style={{ width: "100%" }}>
                     <div id="chat-column" className="chat-column col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 p-0">
                         <div>

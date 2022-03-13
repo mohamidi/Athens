@@ -3,15 +3,15 @@
 <!-- Header -->
 
 <nav class="navbar bg-white">
-    <div class="profilepic col-xs-2">
+    <!-- <div class="profilepic col-xs-2">
         <div class="dot"><p>A</p></div>
-    </div>
-    <div class="container-fluid justify-content-center title">
-        <a href="{{url_for('home_page')}}">
+    </div> -->
+    <div class="container-fluid justify-content-center">
+        <a class="title" href="{{url_for('home_page')}}">
             <img src="/static/images/logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
             Athens
         </a>
-     </div>
+    </div>
 </nav>
 <hr class="m-0" />
 <div class="signout">
@@ -23,20 +23,17 @@
 <div id="reactArticles">Loading ...</div>
 
 <!-- Load JavaScript -->
-<script
-  type="text/javascript"
-  src="{{ url_for('static', filename='js/bundle.js') }}"
->
-    $( document ).ready(function() {
-        fetch('/api/v1/info/')
-        .then(response => {
-            return response.json()
-        })
-        .then(message => {
-            letter = message['firstname'][0].toUpperCase()
-            $('.profilepic p').html(letter);
-        });
+<script type="text/javascript" src="{{ url_for('static', filename='js/bundle.js') }}">
+    // $( document ).ready(function() {
+    //     fetch('/api/v1/info/')
+    //     .then(response => {
+    //         return response.json()
+    //     })
+    //     .then(message => {
+    //         letter = message['firstname'][0].toUpperCase()
+    //         $('.profilepic p').html(letter);
+    //     });
 
-    });
+    // });
 </script>
 {% endblock content %}

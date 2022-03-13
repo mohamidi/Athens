@@ -98,6 +98,7 @@ html, body {
     /* background-image: url('../images/background.png'); */
     background-color: white;
     background-position: 60%;
+    background-size: cover;
     overflow: auto;
 }
 
@@ -167,25 +168,25 @@ html, body {
     border: solid 1px #CC4A4A;
   }
 
-  .dot p {
+.dot p {
     position: relative;
     top: -3%;
-  }
+}
 
-  .signout-button {
+.signout-button {
     background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
-  }
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
 
-  .signout {
-      display: flex;
-      width: 100%;
-      justify-content: center;
-      position: absolute;
-      top: 95%;
-  }
+.signout {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    position: absolute;
+    top: 95%;
+}
