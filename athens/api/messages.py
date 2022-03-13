@@ -23,8 +23,8 @@ def create_message():
     messages = cur.fetchall()
     for message in messages:
         cur = connection.execute(
-            "SELECT color FROM users_to_rooms WHERE user = ?",
-            (message["user"],)
+            "SELECT color FROM users_to_rooms WHERE user = ? and room = ?",
+            (message["user"], roomId)
         )
         message["color"] = cur.fetchone()["color"]
 
