@@ -58,6 +58,11 @@ def update_articles():
             else:
                 date_published = f"{int(date_published.seconds / 3600)} hours ago"
 
+            # Make sure no duplicates are entered into DB
+            titles = [article['title'] for article in utils.execute_query("Select title from articles")]
+            if result['name'] in titles:
+                continue
+
             utils.execute_query(
                 "INSERT INTO articles (title, created, publisher, tag, image_url, url) VALUES(?, ?, ?, ?, ?, ?)",
                 result['name'],

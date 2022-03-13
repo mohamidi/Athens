@@ -8,13 +8,8 @@ function ArticleHeader(props) {
   let roomLink = "/room/?articleId=" + id.toString();
   return (
     <li className="list-group-item">
-        
           <div className="card border-0">
             <div className="row align-items-center justify-content-center">
-              <div className="col-2 col-sm-1 p-0">
-                <a href={url}><button className="btn btn-outline-primary" style={{width: '90%'}}>Read Now <i class="bi bi-newspaper"></i></button></a>    
-                <a href={roomLink}><button className="btn btn-outline-success" style={{width: '90%'}}>Join Chat <i class="bi bi-chat"></i></button></a>    
-              </div>
               <div className="col-10 col-sm-6 col-md-4 p-1">
                 <div className="card-body p-0">
                   <h5 className="card-title headline mb-0">{title}</h5>
@@ -27,7 +22,24 @@ function ArticleHeader(props) {
               <div className="col-2 col-sm-1 p-0">
                 <div style={{ backgroundImage: 'url(' + image_url + ')' }}
                   className="thumbnail rounded" />
+              </div>  
+            </div>
+            <div className="row align-items-center justify-content-center">
+              <div className="col-5 col-sm-3 col-md-2 p-1">
+                <a href={url}>
+                  <button className="btn btn-outline-success" style={{width: "100%"}}>
+                    <i className="bi bi-newspaper"></i>
+                  </button>
+                </a>
               </div>
+              <div className="col-5 col-sm-3 col-md-2 p-1">
+                <a href={roomLink}>
+                  <button className="btn btn-outline-primary" style={{width: "100%"}}>
+                    <i className="bi bi-chat"></i>
+                  </button>
+                </a>
+              </div>
+              
             </div>
           </div>
       </li>
