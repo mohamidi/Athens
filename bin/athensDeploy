@@ -1,5 +1,7 @@
+#!/bin/bash
+
 npx webpack
 npx javascript-obfuscator athens/static/js/bundle.js --reserved-strings '\s*'
 mv athens/static/js/bundle-obfuscated.js athens/static/js/bundle.js
 pkill -f gunicorn
-gunicorn -b localhost:8000 -w 2 -D athens:app
+gunicorn -b localhost:8000 --worker-class eventlet -w 1 -D athens:app
