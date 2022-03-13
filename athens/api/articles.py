@@ -73,12 +73,11 @@ def update_articles():
             continue
 
 
-def get_article():
-    articleId = flask.request.args.get("articleId")
-
+@athens.app.route('/api/v1/article/<id>/', methods=['GET'])
+def get_article(id):
     connection = athens.model.get_db()
     cur = connection.execute(
         "SELECT * FROM articles WHERE id = ?",
-        (articleId,)
+        (id,)
     )
     return flask.jsonify(cur.fetchone())

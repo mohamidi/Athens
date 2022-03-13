@@ -8,7 +8,7 @@ export class ChatHeader extends React.Component {
     }
 
     componentDidMount() {
-        fetch("/api/v1/articles/?articleId=" + this.props.articleId,
+        fetch("/api/v1/article/" + this.props.articleId + "/",
             { credentials: 'same-origin' })
             .then((response) => {
                 if (!response.ok) throw Error(response.statusText);
