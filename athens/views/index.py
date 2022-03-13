@@ -26,15 +26,7 @@ def show_index():
 
 @athens.app.route('/home/')
 def home_page():
-    connection = athens.model.get_db()
-    cur = connection.execute(
-        "SELECT id, title, publisher, tag, image_url, url FROM articles"
-    )
-    articles = cur.fetchall()
-    context = {
-        "articles": articles
-    }
-    return flask.render_template("index.html", **context)
+    return flask.render_template("index.html")
 
 
 @athens.app.route("/favicon.ico")

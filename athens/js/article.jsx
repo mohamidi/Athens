@@ -15,7 +15,7 @@ class Article extends React.Component {
         title: props.articleData.title, 
         publisher: props.articleData.publisher,
         tag: props.articleData.tag,
-        date_published: props.articleData.date_published,
+        created: props.articleData.created,
         url: props.articleData.url, 
         image_url: props.articleData.image_url, 
       };
@@ -25,7 +25,7 @@ class Article extends React.Component {
         title: '', 
         publisher: '',
         tag: '',
-        date_published: '',
+        created: '',
         url: '', 
         image_url: '', 
       };
@@ -34,7 +34,7 @@ class Article extends React.Component {
 
   render() {
     const {
-      id, title, publisher, tag, date_published, url, image_url
+      id, title, publisher, tag, created, url, image_url
     } = this.state;
 
     return (
@@ -44,7 +44,7 @@ class Article extends React.Component {
           title={title}
           publisher={publisher}
           tag={tag}
-          date_published={date_published}
+          created={created}
           url={url}
           image_url={image_url}
         />

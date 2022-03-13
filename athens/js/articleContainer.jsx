@@ -16,7 +16,6 @@ class ArticleContainer extends React.Component{
       this.setState((previousState) => ({
         articles: data.articles
       }));
-      this.saveState();
     }).catch((exception) => {
       console.log(exception);
     });

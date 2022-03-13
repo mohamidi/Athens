@@ -16,17 +16,17 @@ def fetch_articles():
     )[0]['last_update']
 
     if today != last_updated:
-        update_articles()
+        utils.execute_query("DELETE FROM articles")
         utils.execute_query(
             "UPDATE update_articles SET last_update = ? WHERE id = 1",
             today
         )
 
+    update_articles()
     articles = utils.execute_query(
-        "SELECT id, title, publisher, tag, image_url, url FROM articles"
+        "SELECT id, title, created, publisher, tag, image_url, url FROM articles"
     )
     context = {'articles': [article for article in articles]}
-
     return flask.jsonify(**context)
 
 
@@ -40,8 +40,6 @@ def update_articles():
     response.raise_for_status()
     search_results = response.json()
 
-    utils.execute_query("DELETE FROM articles")
-    pass
     for result in search_results['value']:
         try:
             # Thumbnail can be in two different places; try both
