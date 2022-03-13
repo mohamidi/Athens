@@ -24,6 +24,10 @@ h1 {
     font-size: 30px;
 }
 
+.title:hover {
+    color: #CC4A4A;
+}
+
 .article-details {
     font-size: 10px;
     color: #6C757D;

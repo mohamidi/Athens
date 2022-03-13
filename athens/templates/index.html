@@ -2,18 +2,17 @@
 {% block content %}
 <!-- Header -->
 
-<nav class="navbar bg-white">
+<nav class="navbar sticky-top bg-white border-bottom">
     <!-- <div class="profilepic col-xs-2">
         <div class="dot"><p>A</p></div>
     </div> -->
     <div class="container-fluid justify-content-center">
-        <a class="title" href="{{url_for('home_page')}}">
-            <img src="/static/images/logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
-            Athens
+        <a class="title " href="{{url_for('home_page')}}">
+            <img src="/static/images/logo.png" alt="" width="37" height="37"
+                class="d-inline-block align-text-top">Athens
         </a>
     </div>
 </nav>
-<hr class="m-0" />
 <div class="signout">
     <form method="POST" action="/api/v1/signout/">
         <button class="signout-button" type="submit">Sign out</button>
