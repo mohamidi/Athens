@@ -8,7 +8,7 @@ function ArticleHeader(props) {
     } = props
     let roomLink = "/room/?articleId=" + id.toString();
     return (
-        <li className="list-group-item">
+        <li className="list-group-item border-top-0">
             <a href={roomLink}>
                 <div className="card border-0">
                     <div className="row align-items-center justify-content-center">
