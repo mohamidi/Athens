@@ -9,6 +9,9 @@ VALUES ("hasan@umich.edu", "Hasan", "Hutchins", "password");
 INSERT INTO users(email, firstname, lastname, password)
 VALUES ("mohamed@umich.edu", "Mohamed", "Hutchins", "password");
 
+INSERT INTO users(email, firstname, lastname, password)
+VALUES ("david@umich.edu", "David", "Hutchins", "password");
+
 INSERT INTO articles(title, publisher, tag, image_url, url)
 VALUES ("Microsoft to acquire Activision Blizzard for $68.7 billion", "The Verge", "Technology", "",
 "https://www.theverge.com/2022/1/18/22889258/microsoft-activision-blizzard-xbox-acquisition-call-of-duty-overwatch");
