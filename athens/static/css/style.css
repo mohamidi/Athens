@@ -28,6 +28,13 @@ h1 {
     color: #CC4A4A;
 }
 
+.article-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
 .article-details {
     font-size: 10px;
     color: #6C757D;
@@ -149,7 +156,7 @@ html, body {
 .chat-column {
     background: white;
     padding-top: 5px !important;
-    padding-bottom: 105px !important;
+    padding-bottom: 80px !important;
 }
 
 .profilepic {

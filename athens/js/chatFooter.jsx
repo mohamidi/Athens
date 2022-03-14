@@ -45,7 +45,7 @@ export class ChatFooter extends React.Component {
         return (
             <div className="bg-white fixed-bottom container p-0">
                 <hr className="mt-0" />
-                <div className="row justify-content-center pb-5">
+                <div className="row justify-content-center pb-4">
                     <div className="col-10 col-sm-8 col-md-6 col-lg-4 d-flex justify-content-center align-middle">
                         <form className="input-group" onSubmit={this.handleSubmit} style={{ whiteSpace: "nowrap" }}>
                             <input type="text" className="form-control d-inline" placeholder="Touch to enter text ..." name="message" onChange={this.handleChange} value={this.state.input} />

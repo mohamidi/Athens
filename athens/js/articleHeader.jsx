@@ -14,7 +14,7 @@ function ArticleHeader(props) {
                     <div className="row align-items-center justify-content-center">
                         <div className="col-10 col-sm-6 col-md-4 p-1">
                             <div className="card-body p-0">
-                                <h5 className="card-title headline mb-0">{title}</h5>
+                                <h5 className="card-title headline mb-0 article-title">{title}</h5>
                                 <p className="card-text article-details">
                                     {publisher} ~ {created} &nbsp;
                                     <span className={"badge rounded-pill " + TAG_TO_COLOR[tag]}>{tag}</span>
