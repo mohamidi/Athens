@@ -12,8 +12,14 @@ import athens.views.utils as roomUtils
 
 @athens.app.route('/room/')
 def render_room():
-    userId = flask.session.get("userId", 1)
+    userId = flask.session.get("userId")
+    if userId is None:
+        flask.redirect("/login/")
+
     articleId = flask.request.args.get("articleId")
+
+    if articleId is None:
+        flask.redirect("/home/")
 
     try:
         # See if user is already assigned to room for article

@@ -16,11 +16,12 @@ def process_login():
     )
     userId = cur.fetchone()
     if userId is None:
-        return flask.redirect("/login/"), 500
+        return flask.redirect("/login/")
     userId = userId["id"]
     flask.session["userId"] = userId
 
     return flask.redirect("/home/")
+
 
 @athens.app.route('/api/v1/signup/', methods=['POST'])
 def process_signup():
@@ -33,7 +34,7 @@ def process_signup():
     connection = athens.model.get_db()
     cur = connection.execute(
         "INSERT INTO users(email, firstname, lastname, password) VALUES(?,?,?,?)",
-         (email, firstname, lastname, password)
+        (email, firstname, lastname, password)
     )
     cur = connection.execute(
         "SELECT id FROM users WHERE email = ? AND password = ?",
@@ -46,6 +47,7 @@ def process_signup():
     flask.session["userId"] = userId
 
     return flask.redirect("/home/")
+
 
 @athens.app.route('/api/v1/signout/', methods=['POST'])
 def process_signout():

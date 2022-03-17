@@ -26,6 +26,10 @@ def show_index():
 
 @athens.app.route('/home/')
 def home_page():
+    logged_in_user = flask.session.get('userId')
+
+    if not logged_in_user:
+        return flask.redirect(flask.url_for('login'))
     return flask.render_template("index.html")
 
 
