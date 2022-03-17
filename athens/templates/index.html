@@ -13,13 +13,9 @@
         </a>
     </div>
 </nav>
-<div class="signout">
-    <form method="POST" action="/api/v1/signout/">
-        <button class="signout-button" type="submit">Sign out</button>
-    </form>
-</div>
 
-<div id="reactArticles">Loading ...</div>
+
+<div id="reactArticles"></div>
 
 <!-- Load JavaScript -->
 <script type="text/javascript" src="{{ url_for('static', filename='js/bundle.js') }}">
