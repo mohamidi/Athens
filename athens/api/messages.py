@@ -29,10 +29,12 @@ def create_message():
         message["color"] = cur.fetchone()["color"]
 
         cur = connection.execute(
-            "SELECT firstname FROM users WHERE id = ?",
+            "SELECT firstname, lastname FROM users WHERE id = ?",
             (message["user"],)
         )
-        message["firstname"] = cur.fetchone()["firstname"]
+        user = cur.fetchone()
+        message["firstname"] = user["firstname"]
+        message["lastname"] = user["lastname"]
     context = {
         "messages": messages,
         "articleId": articleId,
@@ -61,9 +63,11 @@ def get_messages_for_room():
         message["color"] = cur.fetchone()["color"]
 
         cur = connection.execute(
-            "SELECT firstname FROM users WHERE id = ?",
+            "SELECT firstname, lastname FROM users WHERE id = ?",
             (message["user"],)
         )
-        message["firstname"] = cur.fetchone()["firstname"]
+        user = cur.fetchone()
+        message["firstname"] = user["firstname"]
+        message["lastname"] = user["lastname"]
 
     return flask.jsonify(messages)

@@ -75,6 +75,12 @@ h1 {
     color: white;
 }
 
+.message-name {
+    font-size: .8em;
+    font-weight: 400;
+    color: grey;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }

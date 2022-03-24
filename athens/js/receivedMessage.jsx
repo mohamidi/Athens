@@ -4,6 +4,14 @@ import { COLORS } from './constants';
 export const ReceivedMessage = ({ message, i, includeIcon }) => {
     return (
         <div key={i} className="pb-1">
+            {includeIcon &&
+                <div className='row justify-content-start m-0'>
+                    <div className='col-2 p-0'></div>
+                    <div className='col p-0'>
+                        <span className='message-name'>{message["firstname"]} {message["lastname"]}</span>
+                    </div>
+                </div>
+            }
             <div className="row justify-content-left m-0">
                 <div className="col-2 p-0 d-flex justify-content-center">
                     {includeIcon &&
