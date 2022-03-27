@@ -11,6 +11,7 @@ export class Members extends React.Component {
     }
 
     componentDidMount() {
+        socket.emit("join", { "articleId": this.props.articleId });
         socket.on("member-added", members => {
             this.setState({
                 members: members
@@ -23,12 +24,15 @@ export class Members extends React.Component {
                 return response.json();
             })
             .then((data) => {
-                console.log(data)
                 this.setState({
                     members: data
                 });
             })
             .catch((error) => console.log(error));
+    }
+
+    componentWillUnmount() {
+        socket.disconnect();
     }
 
     render() {

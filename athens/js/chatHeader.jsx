@@ -15,7 +15,6 @@ export class ChatHeader extends React.Component {
                 return response.json();
             })
             .then((data) => {
-                console.log(data);
                 this.setState({
                     article: data
                 });

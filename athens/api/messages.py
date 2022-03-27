@@ -44,24 +44,8 @@ def create_message():
         "messages": messages,
         "articleId": articleId,
     }
-    athens.socketIo.emit("message", context)
+    athens.socketIo.emit("message", context, to=roomId)
     return flask.jsonify(), 204
-
-
-@athens.socketIo.on("ack-message")
-def acknowledge_message(json):
-    articleId = json["articleId"]
-    userId = flask.session.get("userId")
-
-    # get room of user
-    roomId = utils.get_room_id(userId, articleId)
-
-    # decrement unread from users_to_rooms
-    connection = athens.model.get_db()
-    connection.execute(
-        "UPDATE users_to_rooms SET unread = unread - 1 WHERE user = ? and room = ? and unread > 0",
-        (userId, roomId,)
-    )
 
 
 @athens.app.route('/api/v1/messages/', methods=['GET'])

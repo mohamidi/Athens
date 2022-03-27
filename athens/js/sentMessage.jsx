@@ -1,9 +1,9 @@
 import React from 'react';
 import { COLORS } from './constants';
 
-export const SentMessage = ({ message, i, includeIcon }) => {
+export const SentMessage = ({ message, includeIcon }) => {
     return (
-        <div key={i} className="pb-1">
+        <div className="pb-1">
             {includeIcon &&
                 <div className='row justify-content-end m-0'>
                     <div className='col text-end p-0'>
@@ -15,8 +15,8 @@ export const SentMessage = ({ message, i, includeIcon }) => {
             <div className="row justify-content-right m-0">
                 <div className="col-2 p-0"></div>
                 <div className="col p-0 text-break d-inline-flex flex-row-reverse">
-                    <div className="alert alert-primary d-inline-flex m-0 p-1 ps-2 pe-2">
-                        <span style={{ lineHeight: 1.2 }}>{message["message"]}</span>
+                    <div className="message alert alert-primary d-inline-flex m-0 p-1 ps-2 pe-2">
+                        <span>{message["message"]}</span>
                     </div>
                 </div>
                 <div className="col-2 p-0 d-flex justify-content-center">

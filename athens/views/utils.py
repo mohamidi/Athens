@@ -31,7 +31,7 @@ def add_user_to_room(userId, articleId):
             members = cur.fetchall()
 
             # Notify existing room members of new member
-            athens.socketIo.emit("member-added", members)
+            athens.socketIo.emit("member-added", members, to=roomId)
             return
 
     # Create new room

@@ -64,7 +64,6 @@ def get_info():
         (id,)
     )
     results = cur.fetchone()
-    print(results)
     message = {
         "email": results["email"],
         "firstname": results["firstname"],

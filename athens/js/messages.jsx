@@ -21,10 +21,8 @@ export class Messages extends React.Component {
     }
 
     componentDidMount() {
+        socket.emit("join", { "articleId": this.props.articleId });
         socket.on("message", msg => {
-            if (msg["articleId"] != this.props.articleId) {
-                return;
-            }
             socket.emit("ack-message", { "articleId": this.props.articleId });
             this.setState({
                 messages: msg["messages"]
@@ -52,9 +50,9 @@ export class Messages extends React.Component {
     getMessage(message, i) {
         const { messages } = this.state;
         if (message["user"] == this.props.userId) {
-            return <SentMessage message={message} i={i} includeIcon={i == 0 || message["user"] != messages[i - 1]["user"]} />
+            return <SentMessage key={i} message={message} includeIcon={i == 0 || message["user"] != messages[i - 1]["user"]} />
         }
-        return <ReceivedMessage message={message} i={i} includeIcon={i == 0 || message["user"] != messages[i - 1]["user"]} />
+        return <ReceivedMessage key={i} message={message} includeIcon={i == 0 || message["user"] != messages[i - 1]["user"]} />
     }
 
     render() {
