@@ -25,6 +25,7 @@ export class Messages extends React.Component {
             if (msg["articleId"] != this.props.articleId) {
                 return;
             }
+            socket.emit("ack-message", { "articleId": this.props.articleId });
             this.setState({
                 messages: msg["messages"]
             })

@@ -1,4 +1,5 @@
 from athens import utils
+from athens.api.util import get_room_id
 from dateutil import parser
 from datetime import datetime, date, timezone
 import requests
@@ -26,8 +27,24 @@ def fetch_articles():
     articles = utils.execute_query(
         "SELECT id, title, created, publisher, tag, image_url, url FROM articles ORDER BY created ASC"
     )
+    for article in articles:
+        article["unread"] = get_unread_for_user(article["id"])
     context = {'articles': articles}
     return flask.jsonify(**context)
+
+
+def get_unread_for_user(articleId):
+    userId = flask.session.get("userId")
+    try:
+        roomId = get_room_id(userId, articleId)
+        result = utils.execute_query(
+            "SELECT unread FROM users_to_rooms WHERE user = ? and room = ?",
+            userId, roomId
+        )[0]
+        print(result)
+        return int(result["unread"])
+    except Exception:
+        return 0
 
 
 def update_articles():

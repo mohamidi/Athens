@@ -108,6 +108,18 @@ body {
     color: white;
 }
 
+.notification {
+    font-weight: normal;
+    font-size: 1em;
+    height: 1em;
+    width: 1em;
+    color: white;
+    border-radius: 50px;
+    position:absolute;
+    top: -.2em;
+    left: -.2em;
+}
+
 html, body {
     margin: 0;
     height: 100%;

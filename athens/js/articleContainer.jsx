@@ -27,9 +27,9 @@ class ArticleContainer extends React.Component {
         return (
             <div id="articleContainer">
                 {articleList}
-                <div class="signout p-2">
+                <div className="signout p-2">
                     <form method="POST" action="/api/v1/signout/">
-                        <button class="signout-button" type="submit">Sign out</button>
+                        <button className="signout-button" type="submit">Sign out</button>
                     </form>
                 </div>
             </div>
