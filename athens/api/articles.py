@@ -28,12 +28,13 @@ def fetch_articles():
         "SELECT id, title, created, publisher, tag, image_url, url FROM articles ORDER BY created ASC"
     )
     for article in articles:
-        article["unread"] = get_unread_for_user(article["id"])
+        article["unread"], article["active"] = get_article_details_for_user(
+            article["id"])
     context = {'articles': articles}
     return flask.jsonify(**context)
 
 
-def get_unread_for_user(articleId):
+def get_article_details_for_user(articleId):
     userId = flask.session.get("userId")
     try:
         roomId = get_room_id(userId, articleId)
@@ -41,10 +42,9 @@ def get_unread_for_user(articleId):
             "SELECT unread FROM users_to_rooms WHERE user = ? and room = ?",
             userId, roomId
         )[0]
-        print(result)
-        return int(result["unread"])
+        return int(result["unread"]), True
     except Exception:
-        return 0
+        return 0, False
 
 
 def update_articles():

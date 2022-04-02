@@ -4,7 +4,7 @@ import { TAG_TO_COLOR } from './constants';
 
 function ArticleHeader(props) {
     const {
-        id, title, publisher, tag, created, unread, image_url
+        id, title, publisher, tag, created, unread, image_url, active
     } = props
     let roomLink = "/room/?articleId=" + id.toString();
     return (
@@ -24,9 +24,9 @@ function ArticleHeader(props) {
                         <div className="col-2 col-sm-1 p-0" style={{ position: "relative" }}>
                             <div style={{ backgroundImage: 'url(' + image_url + ')' }}
                                 className="thumbnail rounded" />
-                            {unread !== 0 &&
-                                <div className="notification bg-danger d-inline-flex justify-content-center align-items-center">
-                                    <span>{unread}</span>
+                            {active === true &&
+                                <div className={(unread === 0 ? "bg-success" : "bg-danger") + " notification d-inline-flex justify-content-center align-items-center"}>
+                                    <span>{unread === 0 ? "" : unread}</span>
                                 </div>
                             }
                         </div>
@@ -64,6 +64,7 @@ ArticleHeader.prototype = {
     created: PropTypes.string.isRequired,
     unread: PropTypes.number.isRequired,
     image_url: PropTypes.string.isRequired,
+    active: PropTypes.bool.isRequired,
 };
 
 export default ArticleHeader;

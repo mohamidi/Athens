@@ -6,6 +6,14 @@ export const COLORS = [
     "bg-secondary",
 ];
 
+export const TEXT_COLORS = [
+    "text-danger",
+    "text-primary",
+    "text-success",
+    "text-warning",
+    "text-secondary",
+];
+
 export const TAG_TO_COLOR = {
     "Politics": "bg-danger",
     "Business": "bg-warning",

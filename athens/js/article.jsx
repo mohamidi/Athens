@@ -15,6 +15,7 @@ class Article extends React.Component {
                 created: props.articleData.created,
                 unread: props.articleData.unread,
                 image_url: props.articleData.image_url,
+                active: props.articleData.active,
             };
         } else {
             this.state = {
@@ -25,13 +26,14 @@ class Article extends React.Component {
                 created: '',
                 unread: 0,
                 image_url: '',
+                active: false,
             };
         }
     }
 
     render() {
         const {
-            id, title, publisher, tag, created, unread, image_url
+            id, title, publisher, tag, created, unread, image_url, active
         } = this.state;
 
         return (
@@ -44,6 +46,7 @@ class Article extends React.Component {
                     created={created}
                     unread={unread}
                     image_url={image_url}
+                    active={active}
                 />
             </div>
         );

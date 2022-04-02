@@ -21,9 +21,19 @@ class ArticleContainer extends React.Component {
             });
     }
 
+    sortArticles(a, b) {
+        if (a["active"] === true && b["active"] === false) {
+            return -1;
+        } else if (a["unread"] > b["unread"]) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
+
     render() {
         const { articles } = this.state;
-        const articleList = articles.map((article) => <Article key={article.id} articleData={article} />)
+        const articleList = articles.sort(this.sortArticles).map((article) => <Article key={article.id} articleData={article} />)
         return (
             <div id="articleContainer">
                 {articleList}
