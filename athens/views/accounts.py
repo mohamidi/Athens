@@ -21,3 +21,11 @@ def login():
 def signup():
     """Sign-up page"""
     return flask.render_template('signup.html')
+
+@athens.app.route('/account/')
+def account_page():
+    logged_in_user = flask.session.get('userId')
+
+    if not logged_in_user:
+        return flask.redirect(flask.url_for('login'))
+    return flask.render_template("account.html")

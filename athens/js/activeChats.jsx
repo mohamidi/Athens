@@ -1,7 +1,7 @@
 import React from 'react';
 import Article from './article';
 
-class ArticleContainer extends React.Component {
+class ActiveChats extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,7 +14,7 @@ class ArticleContainer extends React.Component {
         fetch('/api/v1/articles/', { credentials: 'same-origin' })
             .then((response) => response.json()).then((data) => {
                 this.setState((previousState) => ({
-                    articles: data.articles
+                    articles: data.articles.filter(article => article.active === true)
                 }));
             }).catch((exception) => {
                 console.log(exception);
@@ -35,11 +35,11 @@ class ArticleContainer extends React.Component {
         const { articles } = this.state;
         const articleList = articles.sort(this.sortArticles).map((article) => <Article key={article.id} articleData={article} />)
         return (
-            <div id="articleContainer">
+            <div id="activeChats">
                 {articleList}
             </div>
         );
     }
 }
 
-export default ArticleContainer;
+export default ActiveChats;

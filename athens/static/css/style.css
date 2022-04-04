@@ -113,6 +113,15 @@ body {
     color: white;
 }
 
+.profileCircle {
+    width: 150px;
+    height: 150px;
+    border-radius: 250px;
+    font-size: 80px;
+    font-weight: bold;
+    color: white;
+}
+
 .notification {
     font-weight: normal;
     font-size: 1em;
@@ -220,4 +229,29 @@ html, body {
 .signout {
     display: flex;
     justify-content: center;
+}
+
+.activeChatDiv {
+    position: absolute;
+    top: 50%;
+}
+
+#activeChats {
+    width: 100%;
+    height: 50vh;
+    overflow: auto;
+}
+
+#profileInfo {
+    position: relative;
+    top: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileName {
+    font-size: 30px;
+    font-weight: bold;
 }
