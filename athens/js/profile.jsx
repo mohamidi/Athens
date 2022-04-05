@@ -10,8 +10,11 @@ class Profile extends React.Component {
 
     render() {
         return (
-            <ProfileInfo></ProfileInfo>
-            <ActiveChats></ActiveChats>
+            <div>
+                <ProfileInfo></ProfileInfo>
+                <ActiveChats></ActiveChats> 
+            </div>
+            
         );
     }
 }

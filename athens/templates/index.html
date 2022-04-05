@@ -2,16 +2,16 @@
 {% block content %}
 <!-- Header -->
 
-<nav class="navbar sticky-top bg-white border-bottom">
+<nav class="navbar d-flex flex-row sticky-top bg-white border-bottom">
     <!-- <div class="profilepic col-xs-2">
         <div class="dot"><p>A</p></div>
     </div> -->
-    <a href="/account">Account Page Link (Temp)</a>
     <div class="container-fluid justify-content-center">
         <a class="title " href="{{url_for('home_page')}}">
             <img src="/static/images/logo.png" alt="" width="37" height="37"
                 class="d-inline-block align-text-top">Athens
         </a>
+        <a href="/account"><div id="profilepic"></div></a>
     </div>
     
 </nav>

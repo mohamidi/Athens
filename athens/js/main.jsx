@@ -4,6 +4,7 @@ import ActiveChats from './activeChats';
 import ArticleContainer from './articleContainer';
 import Chat from './chat';
 import ProfileInfo from './profileInfo';
+import ProfilePic from './profilePic';
 
 function LoadReact(props) {
     const home = "/home/";
@@ -13,6 +14,10 @@ function LoadReact(props) {
         ReactDOM.render(
             <ArticleContainer />,
             document.getElementById('reactArticles')
+        )
+        ReactDOM.render(
+            <ProfilePic />,
+            document.getElementById('profilepic')
         )
     }
     else if (window.location.pathname == room) {

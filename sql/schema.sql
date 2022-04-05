@@ -5,7 +5,7 @@ CREATE TABLE users(
   email VARCHAR(40) NOT NULL,
   firstname VARCHAR(20) NOT NULL,
   lastname VARCHAR(20) NOT NULL,
-  password VARCHAR(256) NOT NULL,
+  password VARCHAR(256) NOT NULL, 
   streak INTEGER NOT NULL DEFAULT 0
 );
 
