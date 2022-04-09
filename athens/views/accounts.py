@@ -29,3 +29,11 @@ def account_page():
     if not logged_in_user:
         return flask.redirect(flask.url_for('login'))
     return flask.render_template("account.html")
+    
+@athens.app.route('/account/<id>/')
+def account_page_id(id):
+    logged_in_user = flask.session.get('userId')
+
+    if not logged_in_user:
+        return flask.redirect(flask.url_for('login'))
+    return flask.render_template("account.html")

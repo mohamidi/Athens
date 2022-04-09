@@ -37,13 +37,16 @@ export class Members extends React.Component {
 
     render() {
         const { members } = this.state;
+        console.log(members)
         return (
             <div className="members">
                 <div style={{ textAlign: "center" }}>
                     {members.map((member, i) => (
-                        <div key={i} className={"circle d-inline-flex ms-1 me-1 justify-content-center align-items-center " + COLORS[member["color"]]}>
-                            <span>{member["firstname"][0]}</span>
-                        </div>
+                        <a href={"/account/" + member['user']}>
+                            <div key={i} className={"circle d-inline-flex ms-1 me-1 justify-content-center align-items-center " + COLORS[member["color"]]}>
+                                <span>{member["firstname"][0]}</span>
+                            </div>
+                        </a>
                     ))}
                 </div>
 

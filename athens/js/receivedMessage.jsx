@@ -2,6 +2,7 @@ import React from 'react';
 import { COLORS } from './constants';
 
 export const ReceivedMessage = ({ message, includeIcon }) => {
+    console.log(message)
     return (
         <div className="pb-1">
             {includeIcon &&
@@ -16,7 +17,7 @@ export const ReceivedMessage = ({ message, includeIcon }) => {
                 <div className="col-2 p-0 d-flex justify-content-center">
                     {includeIcon &&
                         <div className={"circle d-inline-flex justify-content-center align-items-center " + COLORS[message["color"]]}>
-                            <span>{message["firstname"][0]}</span>
+                            <a className="linkProfile" href={"/account/" + message["user"]}><span>{message["firstname"][0]}</span></a>
                         </div>
                     }
                 </div>

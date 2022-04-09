@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-<a href="/home/"><img id="arrow" src="../static/images/arrow.png" alt="arrow" width="34px" height="23px"></a>
+<a href="/home/"><img class="arrow" src="../static/images/arrow.png" alt="arrow" onerror=this.src="../../static/images/arrow.png" width="34px" height="23px"></a>
 <!-- Profile -->
 <div id="profileInfo"></div>
+<div id="profileInfoId"></div>
+
 <!-- Active Chats -->
 <div class="activeChatDiv">
     <p class="m-1">Active Chats</p>

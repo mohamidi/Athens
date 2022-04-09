@@ -70,3 +70,18 @@ def get_info():
         "lastname": results["lastname"],
     }
     return flask.jsonify(message)
+
+@athens.app.route('/api/v1/info/<id>/', methods=['GET'])
+def get_info_id(id):
+    connection = athens.model.get_db()
+    cur = connection.execute(
+        "SELECT email, firstname, lastname FROM users WHERE id = ?",
+        (id,)
+    )
+    results = cur.fetchone()
+    message = {
+        "email": results["email"],
+        "firstname": results["firstname"],
+        "lastname": results["lastname"],
+    }
+    return flask.jsonify(message)

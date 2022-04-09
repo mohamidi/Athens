@@ -243,7 +243,7 @@ html, body {
     overflow: auto;
 }
 
-#profileInfo {
+#profileInfo, #profileInfoId {
     position: relative;
     top: 15vh;
     display: flex;
@@ -257,7 +257,7 @@ html, body {
     font-weight: bold;
 }
 
-#arrow {
+.arrow {
     position: absolute;
     top: 4vh;
     left: 2vh;
@@ -273,11 +273,16 @@ html, body {
 }
 
 .profileHome span {
-    font-size: 20px;
+    font-size: 22px;
 }
 
 #profilepic {
     position: absolute;
     top: 10px;
     left: 85vw;
+}
+
+.linkProfile {
+    text-decoration: none;
+    color: inherit;
 }
